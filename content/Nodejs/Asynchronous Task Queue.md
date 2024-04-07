@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:20
+updated: 2024-04-08T00:22
 tags:
   - nodejs
   - async-task-queue
@@ -55,7 +55,6 @@ let tasks = new Array(10)
 Now that we have our tasks array ready, we can iterate over this tasks array and add each one to our queue. You'll notice that when you run this code, tasks complete in the batches of two since we specified a concurrency of 2.
 
 ```ts
-const queue = new AsyncTaskQueue(2);
 tasks.forEach((t) => queue.addTask(t).then((r) => console.log(r)));
 ```
 
