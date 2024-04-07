@@ -1,14 +1,14 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:38
+updated: 2024-04-08T00:42
 tags:
   - nodejs
   - async-task-queue
   - javascript
 ---
 
-# Definition
+## Definition
 
 An asynchronous task queue is a data structure used for managing and executing asynchronous tasks in a controlled manner. You can think of a task as an async function that performs I/O operations, network requests, or any other asynchronous operation.
 
@@ -207,7 +207,7 @@ well, now we check the `consumerQueue` and see if there's a consumer waiting.
 6. If there's no consumer waiting, push the task wrapper to the `taskQueue`, where it'll eventually be picked up by a consumer.
 
 
-# Putting it all together
+## Putting it all together
  Here's how our `AsyncTaskQueue` class looks like.
 
 ```ts
