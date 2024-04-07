@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:29
+updated: 2024-04-08T00:32
 tags:
   - nodejs
   - async-task-queue
@@ -115,19 +115,20 @@ export class AsyncTaskQueue {
   private async runner() {
     while (true) {
       try {
-		// getNextTask returns  Promise<Task<T>>
-		// The await here unwraps the outer promise and we get Task<T>
-		// and suspends the execution so we're not wasting CPU cycles. 
-		// If the queue is empty, our runner simply sleeps.
-		// Even though JavaScript never sleeps ;-)
-		const task = await this.getNextTask();
-		// The we run the task
-	await task();
+        // getNextTask returns  Promise<Task<T>>
+        // The await here unwraps the outer promise and we get Task<T>
+        // and suspends the execution so we're not wasting CPU cycles. 
+        // If the queue is empty, our runner simply sleeps.
+        // Even though JavaScript never sleeps ;-)
+        const task = await this.getNextTask();
+        // The we run the task which 
+        await task();
       } catch (err) {
         console.error(err);
       }
     }
   }
+
 
 ```
 
