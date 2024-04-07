@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:32
+updated: 2024-04-08T00:34
 tags:
   - nodejs
   - async-task-queue
@@ -135,7 +135,7 @@ export class AsyncTaskQueue {
 
 ## Getting the next task
 
-As we saw our runner runs an infinite loop and inside the loop, calls the `this.getNextTask` method to get the next task. Getting the next task works like this
+As we saw our runner runs an infinite loop calls the `this.getNextTask` method to get the next task. Getting the next task works like this
 - First thing to note is that our `getNextTask` returns a promise that contains the task. 
 - Inside the promise constructor we check if the `taskQueue` has a task available. 
 - If the task is available, we immediately resolve the promise with the available task.
