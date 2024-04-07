@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-07T23:51
+updated: 2024-04-08T00:20
 tags:
   - nodejs
   - async-task-queue
@@ -24,7 +24,7 @@ Our queue works by running all the tasks in the scheduled order while also provi
 const queue = new AsyncTaskQueue(2)
 ```
 
-To demonstrate how to use this queue, let's start by creating a helper function `createTask` that takes a task name and returns a function that emulates an async task (like reading from a file, or sending a network request.).
+To demonstrate how to use this queue, let's start by creating a helper function `createTask` that takes a task name and returns a function that emulates an async task (like reading from a file, or sending a network request).
 
 ```ts
 /**
@@ -43,7 +43,7 @@ function createTask(name: string) {
 ```
 
 
-Now we can use this helper function to create a bunch of tasks. that we can then run using our task queue.
+Now we can use this helper function to create a bunch of tasks.
 
 ```ts
 
@@ -52,7 +52,7 @@ let tasks = new Array(10)
   .map((_, index) => createTask(`Task: ${index + 1}`));
 ```
 
-Now that we have our tasks array ready, we can iterate over this task queue and run the tasks. You'll notice that when you run this code, tasks complete in the batches of two.
+Now that we have our tasks array ready, we can iterate over this tasks array and add each one to our queue. You'll notice that when you run this code, tasks complete in the batches of two since we specified a concurrency of 2.
 
 ```ts
 const queue = new AsyncTaskQueue(2);
@@ -106,7 +106,7 @@ export class AsyncTaskQueue {
 
 ## Running the tasks
 
-`runner` is the method we were calling inside the loop in our constructor.It retrieves the next task from the `taskQueue`  asynchronously and runs it. Since it's getting the next task asynchronously using `this.getNextTask`, the function execution will suspend until there is a task available to run. If there's no task, this function simply sleeps, so we have no wasted CPU cycles.
+`runner` is the method we were calling inside the loop in our constructor. It retrieves the next task from the `taskQueue`  asynchronously and runs it. Since it's getting the next task asynchronously using `this.getNextTask`, the function execution will suspend until there is a task available to run. If there's no task, this function simply sleeps, so we have no wasted CPU cycles.
 
 ```ts
   /**
@@ -116,14 +116,14 @@ export class AsyncTaskQueue {
   private async runner() {
     while (true) {
       try {
-        // getNextTask returns  Promise<Task<T>>
-        // The await here unwraps the outer promise and we get Task<T>
+		// getNextTask returns  Promise<Task<T>>
+		// The await here unwraps the outer promise and we get Task<T>
 		// and suspends the execution so we're not wasting CPU cycles. 
 		// If the queue is empty, our runner simply sleeps.
 		// Even though JavaScript never sleeps ;-)
-        const task = await this.getNextTask();
-        // The we run the task
-        await task();
+		const task = await this.getNextTask();
+		// The we run the task
+	await task();
       } catch (err) {
         console.error(err);
       }
@@ -324,4 +324,10 @@ const queue = new AsyncTaskQueue(2);
 
 tasks.forEach((t) => queue.addTask(t).then((r) => console.log(r)));
 
+```
+
+Since the code is written using TypeScript, you can use Bun to run it directly. 
+
+```bash
+bun index.ts
 ```
