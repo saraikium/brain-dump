@@ -1,14 +1,9 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
-/**
- * Quartz 4.0 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
- */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Saraikium's Thoughts",
+    pageTitle: "My Knowledge Graph",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
@@ -35,17 +30,20 @@ const config: QuartzConfig = {
           dark: "#2b2b2b",
           // secondary: "#284b63",
           secondary: "#FF5D62",
-          tertiary: "#84a59d",
+          tertiary: "#B894FF",
           highlight: "rgba(143, 159, 169, 0.15)",
         },
         darkMode: {
           light: "#161618",
           lightgray: "#393639",
           gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
+          // darkgray: "#d4d4d4",
+          darkgray: "#72C3D5",
+          dark: "#72C3D5",
+          // dark: "#ebebec",
           secondary: "#FF5D62",
-          tertiary: "#84a59d",
+          // tertiary: "#84a59d",
+          tertiary: "#B894FF",
           highlight: "rgba(143, 159, 169, 0.15)",
         },
       },
