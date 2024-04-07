@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:22
+updated: 2024-04-08T00:25
 tags:
   - nodejs
   - async-task-queue
@@ -214,10 +214,7 @@ type ResolveFunc<T> = (value: T | PromiseLike<T>) => void;
 type Task<T> = () => Promise<T>;
 
 export class AsyncTaskQueue {
-  // taskQueue is used for storing tasks / taskWrappers
   private taskQueue: Task<any>[] = [];
-  // consumerQueue is used for storing the resolve parameter of the Promise constructor.
-  // You'll soon see why
   private consumerQueue: ResolveFunc<Task<any>>[] = [];
 
   constructor(concurrency: number) {
