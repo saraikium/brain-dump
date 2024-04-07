@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:25
+updated: 2024-04-08T00:29
 tags:
   - nodejs
   - async-task-queue
@@ -85,7 +85,7 @@ type ResolveFunc<T> = (value: T | PromiseLike<T>) => void;
 
 ## Constructor
 
-We take `concurrency` as the input parameter of the constructor which controls how many tasks we can run concurrently. If the `concurrency` is less than `0`, we throw an error, otherwise, we spawn n runners where n is equal to concurrency. 
+We take `concurrency` as the input parameter of the constructor which controls how many tasks we can run concurrently. If the `concurrency` is less than or equal to `0`, we throw an error, otherwise, we spawn n runners where n is equal to concurrency. 
 ```ts
 export class AsyncTaskQueue {
 	...
