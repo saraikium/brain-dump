@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:34
+updated: 2024-04-08T00:38
 tags:
   - nodejs
   - async-task-queue
@@ -207,7 +207,8 @@ well, now we check the `consumerQueue` and see if there's a consumer waiting.
 6. If there's no consumer waiting, push the task wrapper to the `taskQueue`, where it'll eventually be picked up by a consumer.
 
 
-So putting it all together here's what our `AsyncTaskQueue` class looks like
+# Putting it all together
+ Here's how our `AsyncTaskQueue` class looks like.
 
 ```ts
 // queue.ts
