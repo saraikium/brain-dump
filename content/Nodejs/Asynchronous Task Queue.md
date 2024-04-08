@@ -1,7 +1,7 @@
 ---
 id: async-task-queue
 created: 2024-04-07T17:30
-updated: 2024-04-08T00:42
+updated: 2024-04-08T14:12
 tags:
   - nodejs
   - async-task-queue
@@ -203,7 +203,9 @@ Let's see what happens inside the promise constructor
 	...
 ```
 well, now we check the `consumerQueue` and see if there's a consumer waiting. 
+
 5. If we have a consumer waiting, we simply pass the `taskWrapper` to the waiting consumer so it can be run immediately.
+
 6. If there's no consumer waiting, push the task wrapper to the `taskQueue`, where it'll eventually be picked up by a consumer.
 
 
